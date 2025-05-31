@@ -1,0 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playwrite+NG+Modern:wght@100..400&family=Quicksand:wght@300..700&display=swap');
+:root{
+  --colorPrim : #ffc400;
+  --colorSec : #1fb8ff;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit';
+}
+.hero-container{
+  height: 100vh;
+  width: 100vw;
+  background-color: whitesmoke;
+}

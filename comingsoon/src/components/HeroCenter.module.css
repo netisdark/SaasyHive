@@ -1,0 +1,55 @@
+.heroCenter{
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+}
+.centerTop,.centerBottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heroText{
+    color: var(--colorSec);
+    font-size: 3em;
+    font-weight: 800;
+    text-align: center;
+}
+.notifyText{
+    color: var(--colorSec);
+    padding: 2vh 0vh;
+    font-weight: 500;
+}
+.notifyInputCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notifyInput{
+    width: 35vh;
+    height: 6vh;
+    padding-left: 1vh;
+    outline: none;
+    border: 1px solid var(--colorSec);
+    border-radius: 4vh 0vh 0vh 4vh;
+}
+.notifyBtn{
+    border: none;
+    height: 6vh;
+    border-radius: 0vh 4vh 4vh 0vh;
+    width: 15vh;
+    background-color: var(--colorSec);
+    color: #fff;
+    cursor: pointer;
+}
+.notifyBtn:hover{
+    background-color: rgb(109, 214, 255);
+    transition: .25s ease;
+}
+.heroBee{
+    visibility: hidden;
+    height: 100%;
+    width: 35vh;
+    background-image: url('../assets/herboBee.png');
+    background-position: center;
+    background-size: 100% 100%;
+}
