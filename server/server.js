@@ -12,6 +12,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 const subscribersFile = path.join(__dirname, 'subscribers.json');
 
 app.post('/api/notify', async (req, res) => {
@@ -22,7 +28,6 @@ app.post('/api/notify', async (req, res) => {
   }
 
   try {
-    // 1. Read existing subscribers
     let subscribers = [];
     if (fs.existsSync(subscribersFile)) {
       const data = fs.readFileSync(subscribersFile, 'utf8');
@@ -65,5 +70,5 @@ app.post('/api/notify', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at port: ${PORT}`);
 });
