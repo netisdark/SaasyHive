@@ -68,7 +68,7 @@ app.post('/api/notify', async (req, res) => {
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Fallback: serve index.html
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
