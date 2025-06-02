@@ -1,25 +1,27 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
-require('dotenv').config();
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import nodemailer from 'nodemailer';
+import fs from 'fs';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
+// Email storage path
 const subscribersFile = path.join(__dirname, 'subscribers.json');
 
+// API endpoint
 app.post('/api/notify', async (req, res) => {
   const { email } = req.body;
 
@@ -34,13 +36,11 @@ app.post('/api/notify', async (req, res) => {
       subscribers = JSON.parse(data);
     }
 
-    // 2. Avoid duplicate entries
     if (!subscribers.includes(email)) {
       subscribers.push(email);
       fs.writeFileSync(subscribersFile, JSON.stringify(subscribers, null, 2));
     }
 
-    // 3. Send confirmation email to the user
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -53,22 +53,25 @@ app.post('/api/notify', async (req, res) => {
       from: `"SaasyHIVE" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: '🎉 You’re on the List!',
-      html: `
-        <h2>Thanks for signing up!</h2>
-        <p>We're excited to launch soon. You’ll be the first to know when we go live 🚀</p>
-        <p><small>If this wasn’t you, you can ignore this email.</small></p>
-      `
+      html: `<h2>Thanks for signing up!</h2><p>We’ll notify you at launch 🚀</p>`
     };
 
     await transporter.sendMail(mailOptions);
-
-    res.status(200).json({ message: 'Confirmation email sent and email stored.' });
+    res.status(200).json({ message: 'Confirmation email sent.' });
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ message: 'Failed to send email or store data.' });
+    res.status(500).json({ message: 'Failed to send email.' });
   }
 });
 
+// Serve static files from client/dist
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// Fallback: serve index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
 app.listen(PORT, () => {
-  console.log(`Server running at port: ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
