@@ -42,7 +42,38 @@
   100% { transform: translate(0, 0); }
 }
 
-
 .float {
   animation: floatUpDown 6s ease-in-out infinite;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .cellWrap {
+    height: 16vh;
+    width: 16vh;
+  }
+  
+  .hiveCell {
+    font-size: 0.7em;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .heroRight {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3vh 2vh;
+    height: auto;
+    order: 3;
+  }
+  
+  .cellWrap {
+    height: 12vh;
+    width: 12vh;
+  }
+  
+  .hiveCell {
+    font-size: 0.6em;
+  }
 }

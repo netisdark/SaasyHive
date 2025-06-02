@@ -3,3 +3,22 @@
  grid-template-columns: 2fr 3fr 2fr; 
  height: 85vh;
 }
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1.5fr 3fr 1.5fr;
+    height: 80vh;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 85vh;
+    padding: 2vh 0;
+  }
+}
