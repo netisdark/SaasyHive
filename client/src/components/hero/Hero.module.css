@@ -1,0 +1,5 @@
+.hero{
+ display: grid;
+ grid-template-columns: 2fr 3fr 2fr; 
+ height: 85vh;
+}

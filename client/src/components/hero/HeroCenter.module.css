@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+
+.heroCenter{
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+}
+.centerTop,.centerBottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heroText{
+    color: var(--colorTer);
+    font-size: 3em;
+    font-weight: 800;
+    text-align: center;
+    font-family: 'Orbitron';
+}
+.notifyText{
+    color: var(--colorTer);
+    padding: 2vh 0vh;
+    font-weight: 500;
+    font-family: 'Orbitron';
+}
+.notifyInputCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notifyInput{
+    width: 35vh;
+    height: 6vh;
+    padding-left: 2vh;
+    outline: none;
+    border: none;
+    border-radius: 4vh 0vh 0vh 4vh;
+}
+.notifyBtn{
+    border: none;
+    height: 6vh;
+    border-radius: 0vh 4vh 4vh 0vh;
+    width: 15vh;
+    background-color: var(--colorPrim);
+    color: var(--colorTer);
+    cursor: pointer;
+    border: none;
+}
+.notifyBtn:hover{
+    background-color: rgb(255, 224, 46);
+    transition: .25s ease;
+}
+.heroBee{
+    visibility: hidden;
+    height: 100%;
+    width: 35vh;
+    background-image: url('../../assets/herboBee.png');
+    background-position: center;
+    background-size: 100% 100%;
+}
