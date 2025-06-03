@@ -66,7 +66,13 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
-
+app.get('/server/subscribers', (req, res) => {
+  fs.readFile(subscribersFile, function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+});
 app.listen(PORT, () => {
   console.log(`Server running on port:${PORT}`);
 });
