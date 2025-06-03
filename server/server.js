@@ -40,7 +40,7 @@ const connectToMongoDB = async () => {
     // Test the connection
     await client.db("admin").command({ ping: 1 });
     
-    db = client.db('saasyhive'); // Explicitly specify database name
+    db = client.db('SaasyHive'); // Explicitly specify database name
     console.log('Connected to MongoDB successfully');
   } catch (error) {
     console.error('Failed to connect to MongoDB:', error);
@@ -72,7 +72,7 @@ app.post('/api/notify', async (req, res) => {
     }
 
     // Send confirmation email
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
