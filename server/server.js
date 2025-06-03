@@ -9,6 +9,12 @@ import { MongoClient } from 'mongodb';
 
 dotenv.config();
 
+// Debug: Check if environment variables are loaded
+console.log('Environment variables check:');
+console.log('MONGODB_URL:', process.env.MONGODB_URL ? 'Found' : 'Not found');
+console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'Found' : 'Not found');
+console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Found' : 'Not found');
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -21,12 +27,24 @@ app.use(bodyParser.json());
 let db;
 const connectToMongoDB = async () => {
   try {
+    // Check if MONGODB_URL is defined
+    if (!process.env.MONGODB_URL) {
+      throw new Error('MONGODB_URL environment variable is not defined. Please check your .env file.');
+    }
+    
+    console.log('Attempting to connect to MongoDB...');
+    
     const client = new MongoClient(process.env.MONGODB_URL);
     await client.connect();
-    db = client.db(); // Uses the database from the connection string
+    
+    // Test the connection
+    await client.db("admin").command({ ping: 1 });
+    
+    db = client.db('saasyhive'); // Explicitly specify database name
     console.log('Connected to MongoDB successfully');
   } catch (error) {
     console.error('Failed to connect to MongoDB:', error);
+    console.error('Connection string format should be: mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority');
     process.exit(1);
   }
 };
