@@ -1,6 +1,33 @@
 import styles from './HeroCenter.module.css';
 import { useEffect } from 'react';
+const handleNotifyClick = async () => {
+    if (!email.trim()) {
+      alert("Please enter your email.");
+      return;
+    }
 
+    try {
+      const response = await fetch('https://saasyhive.onrender.com/api/notify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('You have been successfully subscribed!');
+        setEmail('');
+      } else {
+        alert(result.message || 'Something went wrong.');
+      }
+    } catch (error) {
+      alert('Failed to send request.');
+      console.error(error);
+    }
+  };
 export default function HeroCenter(){
 
     useEffect(() => {
@@ -30,7 +57,7 @@ export default function HeroCenter(){
             
             <div className={styles.notifyInputCont}>
                 <input className={styles.notifyInput} type="text" placeholder="Enter Your Email..."/>
-                <button className={styles.notifyBtn}>Notify Me</button>
+                <button onClick={handleNotifyClick} className={styles.notifyBtn}>Notify Me</button>
             </div>
         </div>
 
