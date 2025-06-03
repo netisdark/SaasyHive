@@ -1,6 +1,10 @@
 import styles from './HeroCenter.module.css';
-import { useEffect } from 'react';
-const handleNotifyClick = async () => {
+import { useEffect, useState } from 'react';
+
+export default function HeroCenter() {
+  const [email, setEmail] = useState('');
+
+  const handleNotifyClick = async () => {
     if (!email.trim()) {
       alert("Please enter your email.");
       return;
@@ -28,39 +32,45 @@ const handleNotifyClick = async () => {
       console.error(error);
     }
   };
-export default function HeroCenter(){
 
-    useEffect(() => {
-        if (window.ScrollReveal) {
-          window.ScrollReveal().reveal(`.${styles.heroBee}`, {
-            distance: '100px',
-            duration: 900,
-            easing: 'ease',
-            origin : 'bottom',
-            opacity : 0,
-            scale : 0
-          });
+  useEffect(() => {
+    if (window.ScrollReveal) {
+      window.ScrollReveal().reveal(`.${styles.heroBee}`, {
+        distance: '100px',
+        duration: 900,
+        easing: 'ease',
+        origin: 'bottom',
+        opacity: 0,
+        scale: 0
+      });
 
-          window.ScrollReveal().reveal(`.${styles.centerTop}`, {
-            duration: 2000,
-            distance : '100px',
-            easing: 'ease',
-            opacity : 0
-          });
-        }
-      }, []);
+      window.ScrollReveal().reveal(`.${styles.centerTop}`, {
+        duration: 2000,
+        distance: '100px',
+        easing: 'ease',
+        opacity: 0
+      });
+    }
+  }, []);
 
-    return <div className={styles.heroCenter}>
-        <div className={styles.centerTop}>
-            <div className={styles.heroText}>The Future Of SaaS is Hatching Soon</div>
-             <p className={styles.notifyText}>Get Notified When We Launch...</p>
-            
-            <div className={styles.notifyInputCont}>
-                <input className={styles.notifyInput} type="text" placeholder="Enter Your Email..."/>
-                <button onClick={handleNotifyClick} className={styles.notifyBtn}>Notify Me</button>
-            </div>
+  return (
+    <div className={styles.heroCenter}>
+      <div className={styles.centerTop}>
+        <div className={styles.heroText}>The Future Of SaaS is Hatching Soon</div>
+        <p className={styles.notifyText}>Get Notified When We Launch...</p>
+
+        <div className={styles.notifyInputCont}>
+          <input
+            id="email"
+            className={styles.notifyInput}
+            type="text"
+            placeholder="Enter Your Email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={handleNotifyClick} className={styles.notifyBtn}>Notify Me</button>
         </div>
-
-
+      </div>
     </div>
+  );
 }
