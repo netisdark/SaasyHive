@@ -17,9 +17,10 @@
 }
 .notifyText{
     color: var(--colorTer);
-    padding: 2vh 0vh;
     font-weight: 500;
     font-family: 'Orbitron';
+    text-align: center;
+    padding: 2vh 0vh;
 }
 .notifyInputCont{
     display: flex;
@@ -47,4 +48,47 @@
 .notifyBtn:hover{
     background-color: rgb(255, 224, 46);
     transition: .25s ease;
+}
+
+
+
+@media(max-width : 768px){
+    .heroText{
+        font-size: 2em;
+        width: 50vh;
+    }
+    .notifyBtn{
+        width: 12vh;
+        font-size: .8em;
+    }
+    .notifyInput{
+        width: 32vh;
+    }
+}
+@media(max-width: 576px){
+    .heroText{
+        font-size: 1.25em;
+        width: 100%;
+        padding-top: 5vh;
+    }
+    .notifyText{
+        font-size: .7em;
+
+    }
+    .notifyInputCont{
+        padding-bottom: 10vh;
+    }
+    .notifyInput{
+        width: 35vh;
+        height: 5vh;
+        font-size: .7em;
+    }
+    .notifyBtn{
+        width: 15vh;
+        height: 5vh;
+        font-size: .7em;
+    }
+    .heroCenter{
+        width: 100vw;
+    }
 }

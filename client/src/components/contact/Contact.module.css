@@ -22,6 +22,7 @@
     font-size: 2em;
     font-weight: 700;
     padding: 2vh;
+    font-family: 'Orbitron';
 }
 input,textarea{
     border-radius: 4vh;
@@ -44,12 +45,30 @@ button{
     height: 6vh;
     width: 18vh;
     border-radius: 4vh;
-    background-color: var(--colorPrim);
-    color: var(--colorTer);
+    background-color: var(--colorTer);
+    color: #000;
     cursor: pointer;
 }
 button:hover{
-    background-color: var(--colorTer);
-    color: var(--colorPrim);
+    background-color: #000;
+    color: var(--colorTer);
     transition: .25s ease;
+}
+
+
+
+@media(max-width:576px){
+    .contactBox{
+        width: fit-content;
+        padding: 4vh;
+        border-radius: 4vh;
+    }
+    input,textarea{
+        width: 45vh;
+        font-size: .8em;
+    }
+    .queryTitle{
+        font-weight: normal;
+        font-size: 1.5em;
+    }
 }

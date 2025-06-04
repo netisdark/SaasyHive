@@ -4,3 +4,11 @@
  height: 85vh;
  overflow: hidden;
 }
+@media(max-width: 576px){
+    .hero{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+}

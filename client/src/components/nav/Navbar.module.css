@@ -84,3 +84,28 @@
     color: var(--colorPrim);
     transition: .2s ease;
 }
+
+
+@media(max-width : 768px){
+    .navbar{
+        padding: 0vh 2vh;
+    }
+    .brandName{
+        font-size: 2.25em;
+    }
+    .navItemCont{
+        gap: 2vh;
+        padding: 1vh 2vh;
+    }
+    .navItem{
+        font-size: .8em;
+        padding: 1vh 5px;
+    }
+}
+
+@media(max-width : 576px){
+    .navbar,.spacer{height: 12vh;}
+    .brandName{ font-size: 1.35em;}
+    .navItemCont{padding: 0vh 1vh; gap : 1vh;}
+    .navItem{font-size: .65em;}
+}

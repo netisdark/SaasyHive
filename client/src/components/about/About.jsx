@@ -30,7 +30,7 @@ export default function About(){
 
     return <div className={styles.aboutCont}>
         <div className={styles.aboutTitle}>
-            Elevating Education, Hospitality &amp; Tourism <br />
+            Elevating Education, Hospitality &amp; Tourism
             through Automated SaaS Solutions.
         </div>
         <div className={styles.aboutDesc}>

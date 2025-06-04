@@ -19,3 +19,21 @@
     text-align: justify;
     padding: 5vh 0vh;
 }
+@media(max-width:1000px){
+    .aboutTitle{
+        font-size: 1.8em;
+    }
+    .aboutDesc{
+        width: 80%;
+    }
+}
+@media(max-width:576px){
+    .aboutTitle{
+        padding: 0vh 2vh;
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .aboutDesc{
+        font-size: .8em;
+    }
+}

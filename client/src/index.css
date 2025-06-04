@@ -33,3 +33,15 @@ body{
     #000
   );
 }
+
+@media (max-width: 576px) {
+  .hero-container {
+    background-image: radial-gradient(
+      ellipse 100% 50%,
+      rgb(77, 77, 77),
+      rgb(24, 24, 24),
+      #000,
+      #000
+    );
+  }
+}
