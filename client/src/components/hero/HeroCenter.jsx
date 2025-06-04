@@ -1,7 +1,38 @@
 import styles from './HeroCenter.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function HeroCenter() {
+
+  const [email, setEmail] = useState('');
+
+  const handleNotifyClick = async () => {
+    if (!email.trim()) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    try {
+      const response = await fetch('https://saasyhive.onrender.com/api/notify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('You have been successfully subscribed!');
+        setEmail('');
+      } else {
+        alert(result.message || 'Something went wrong.');
+      }
+    } catch (error) {
+      alert('Failed to send request.');
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     if (window.ScrollReveal) {
@@ -19,8 +50,16 @@ export default function HeroCenter() {
     <p className={styles.notifyText}>Get Notified When We Launch...</p>
 
     <div className={styles.notifyInputCont}>
-      <input className={styles.notifyInput} type="text" placeholder="Enter Your Email..." />
-      <button className={styles.notifyBtn}>Notify Me</button>
-    </div>
+    <input
+            id="email"
+            className={styles.notifyInput}
+            type="text"
+            placeholder="Enter Your Email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={handleNotifyClick} className={styles.notifyBtn}>Notify Me</button>
+        </div>
   </div>
 }
+
