@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -7,13 +8,59 @@
     height: 15vh;
     width: 100%;
     padding: 0vh 5vh;
+    position: fixed;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.767);
+    backdrop-filter: blur(10px);
 }
-.brandName{
-    font-family: "Bagel Fat One";
-    font-size: 4em;
+.spacer{
+    height: 15vh;
+    width: 100vw;
+}
+.brandName {
+    font-family: "Orbitron";
+    font-size: 3em;
     font-style: italic;
     color: var(--colorPrim);
+    font-weight: 800;
+    position: relative;
+    overflow: hidden; 
 }
+
+.brandName {
+    font-family: "Orbitron";
+    font-size: 3em;
+    font-style: italic;
+    font-weight: 800;
+    background: linear-gradient(
+        135deg,
+        var(--colorPrim) 30%, 
+        #fff 50%, 
+        var(--colorPrim) 70%
+    );
+    background-size: 150% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding: 0 0.5em;
+    overflow: visible;
+    animation: shineText 2s forwards;
+}
+
+@keyframes shineText {
+    0% {
+        background-position: 150% 0;
+    }
+    100% {
+        background-position: 0% 0;
+    }
+}
+
+
+
 .navItemCont{
     display: grid;
     grid-template-columns: repeat(3,1fr);

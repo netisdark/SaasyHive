@@ -1,5 +1,6 @@
 import styles from './Navbar.module.css'
 import { useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar(){
 
@@ -23,13 +24,16 @@ export default function Navbar(){
         }
       }, []);
 
-    return <div className={styles.navbar}>
-        <div className={styles.brandName}>SaaSyHive</div>
+    return  <div className={styles.navCont}>
+    <div className={styles.navbar}>
+        <NavLink to='/' className={styles.brandName}>SaaSyHive</NavLink>
 
         <div className={styles.navItemCont}>
-            <div className={styles.navItem}>Products</div>
-            <div className={styles.navItem}>About</div>
-            <div className={styles.navItem}>Contact</div>
+            <NavLink to='/' className={styles.navItem}>Home</NavLink>
+            <NavLink to='/about' className={styles.navItem}>About</NavLink>
+            <NavLink to='/contact' className={styles.navItem}>Contact</NavLink>
         </div>
+    </div>
+    <div className={styles.spacer}></div>
     </div>
 }

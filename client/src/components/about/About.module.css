@@ -1,0 +1,20 @@
+.aboutCont{
+    height: 85vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorTer);
+}
+.aboutTitle{
+    font-size: 2em;
+    font-family: 'Orbitron';
+    text-align: center;
+    font-weight: 500;
+}
+.aboutDesc{
+    width: 40%;
+    text-align: justify;
+    padding: 10vh 0vh;
+}

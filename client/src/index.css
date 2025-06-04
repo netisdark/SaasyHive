@@ -1,5 +1,8 @@
-
+/* Outfit */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playwrite+NG+Modern:wght@100..400&family=Quicksand:wght@300..700&display=swap');
+/* Orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
 :root{
   --colorPrim : #ffc400;
   --colorSec : #1fb8ff;
@@ -10,18 +13,23 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Outfit';
-}
-body{
-  overflow-x: hidden;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  list-style-position: inside;
 }
 body{
   height: 100vh;
-  width: 100vw;
-  background-image: url('./assets/heroBg.jpg');
-  background-position: center;
-  background-size: 100% 100%;
+  width: 100vw; 
+  overflow-x: hidden;
 }
 .hero-container{
   height: 100vh;
   width: 100vw;
+  background-image: radial-gradient(
+    #000000b6,
+    #000,
+    #000,
+    #000
+  );
 }

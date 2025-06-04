@@ -3,10 +3,6 @@
 
 
 .heroCenter{
-    display: grid;
-    grid-template-rows: 3fr 2fr;
-}
-.centerTop,.centerBottom{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,12 +47,4 @@
 .notifyBtn:hover{
     background-color: rgb(255, 224, 46);
     transition: .25s ease;
-}
-.heroBee{
-    visibility: hidden;
-    height: 100%;
-    width: 35vh;
-    background-image: url('../../assets/herboBee.png');
-    background-position: center;
-    background-size: 100% 100%;
 }
