@@ -23,7 +23,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// MongoDB connection
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get(/^\/(?!api|server).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
+
 let db;
 const connectToMongoDB = async () => {
   try {
@@ -95,11 +101,6 @@ app.post('/api/notify', async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
 
 // Updated subscribers endpoint to fetch from MongoDB
 app.get('/server/subscribers', async (req, res) => {
