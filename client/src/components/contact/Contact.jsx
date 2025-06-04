@@ -14,7 +14,7 @@ export default function Contact(){
     const handleContact = async () => {
 
     try {
-      const response = await fetch('https://saasyhive.onrender.com/api/contact', {
+      const response = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -25,13 +25,13 @@ export default function Contact(){
       const result = await response.json();
 
       if (response.ok) {
-        alert('You have been successfully subscribed!');
+        alert('Message Sent!');
         setEmail('');
       } else {
         alert(result.message || 'Something went wrong.');
       }
     } catch (error) {
-      alert('Failed to send request.');
+      alert('Failed to send Message.');
       console.error(error);
     }
   };

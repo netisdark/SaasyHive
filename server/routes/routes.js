@@ -1,5 +1,5 @@
 import express from 'express';
-import { handleNotify, getSubscribers } from '../controllers/controller.js';
+import { handleNotify, getSubscribers, contact } from '../controllers/controller.js';
 
 const router = express.Router();
 
