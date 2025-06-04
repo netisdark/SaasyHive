@@ -12,7 +12,7 @@ export default function HeroCenter() {
     }
 
     try {
-      const response = await fetch('https://localhost:5000/api/notify', {
+      const response = await fetch('https://saasyhive.onrender.com/api/notify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
