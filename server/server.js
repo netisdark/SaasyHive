@@ -14,16 +14,27 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// Configure CORS for Azure deployment
+const corsOptions = {
+  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Routes
 app.use('/api', subscriberRoutes);
 
-// Serve frontend
-app.use(express.static(path.join(__dirname, '../client/dist')));
-app.get(/^\/(?!api|server).*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+// Health check endpoint for Azure
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'healthy', timestamp: new Date().toISOString() });
+});
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Backend API is running', version: '1.0.0' });
 });
 
 const startServer = async () => {

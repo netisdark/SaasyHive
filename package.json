@@ -1,8 +1,12 @@
 {
   "scripts": {
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "client": "cd client && npm run dev",
-    "server": "cd server && nodemon server.js"
+    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
+    "client:dev": "cd client && npm run dev",
+    "server:dev": "cd server && nodemon server.js",
+    "server:start": "cd server && node server.js",
+    "client:build": "cd client && npm run build",
+    "backend:deploy": "echo 'Deploy backend to Azure App Service'",
+    "frontend:deploy": "echo 'Deploy frontend to Render (use npm run client:dev for dev mode)'"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",

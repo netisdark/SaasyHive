@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './Contact.module.css';
+import { contactApi } from '../../utils/api';
 
 
 
@@ -12,26 +13,12 @@ export default function Contact(){
 
 
     const handleContact = async () => {
-
     try {
-      const response = await fetch('https://saasyhive.onrender.com/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, namee, text })
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert('Message Sent!');
-        setEmail('');
-      } else {
-        alert(result.message || 'Something went wrong.');
-      }
+      await contactApi(namee, email, text);
+      alert('Message Sent!');
+      setEmail('');
     } catch (error) {
-      alert('Failed to send Message.');
+      alert(error.message || 'Failed to send Message.');
       console.error(error);
     }
   };

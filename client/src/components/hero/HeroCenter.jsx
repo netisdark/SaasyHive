@@ -1,5 +1,6 @@
 import styles from './HeroCenter.module.css';
 import { useEffect, useState } from 'react';
+import { notifyApi } from '../../utils/api';
 
 export default function HeroCenter() {
 
@@ -12,24 +13,11 @@ export default function HeroCenter() {
     }
 
     try {
-      const response = await fetch('https://saasyhive.onrender.com/api/notify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert('You have been successfully subscribed!');
-        setEmail('');
-      } else {
-        alert(result.message || 'Something went wrong.');
-      }
+      await notifyApi(email);
+      alert('You have been successfully subscribed!');
+      setEmail('');
     } catch (error) {
-      alert('Failed to send request.');
+      alert(error.message || 'Failed to send request.');
       console.error(error);
     }
   };

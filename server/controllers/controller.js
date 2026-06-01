@@ -42,14 +42,14 @@ export const contact = async (req, res) => {
   const {email , namee, text} = req.body;
   try {
     const db = getDB();
-    await db.collection('messages').insertOne({ namee, email, text,  At: new Date() });
-    console.log('Message sent Succesfully!');
+    await db.collection('messages').insertOne({ namee, email, text, at: new Date() });
+    console.log('Message sent Successfully!');
 
     await sendMessageMail(email, namee, text);
-    res.status(200).json({ message: 'Mail sent Succedfully!' });
+    res.status(200).json({ message: 'Message sent successfully!' });
   }
   catch(err){
-    console.error('Notify error:', err);
+    console.error('Contact error:', err);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }
